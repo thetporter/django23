@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1 class="font-weight-bold text-center mb-5 mt-5">Main page</h1>
+
+<div class="row justify-content-center">
+	{% for blog in blogs %}
+	  <div class="col-md-2">
+	    {% if blog.url %}
+		 <a href="{{ blog.url }}">
+		   <img src="{{ blog.image.url }}" class="img-fluid mb-2"/>
+		 </a>
+	    {% else %}
+		 <img src="{{ blog.image.url }}" class="img-fluid mb-2"/>
+	    {% endif %}
+	    <div class="text-center">
+		   <h3>{{ blog.title }}</h3>
+		   <p>{{ blog.description }}</p>
+		   <h5>Date: {{ blog.date|date:'M j Y' }}</h5>
+		   <h5 class="text-muted" >Category: {{ blog.categories.first.name }}</h5>
+		   <h5>Author: {{ blog.user}}</h5>
+
+		   
+	    </div>
+	  </div>
+	{% endfor %}
+ </div>
+
+{% endblock %}

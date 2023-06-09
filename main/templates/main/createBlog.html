@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h2>{{ error }}</h2>
+
+<div class="row"  style="margin: 0px 15px 15px 15px">
+  <div class="col-sm-6">
+    <h1>Create a blog:</h1>
+    <form method="post" enctype="multipart/form-data" class="blog-form">
+      {% csrf_token %}     
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+</div>
+
+
+<div class="row mb-15">
+  {% for blog in blogs %}
+    <div class="col-md-2">
+      {% if blog.url %}
+        <a href="{{ blog.url }}">
+          <img src="{{ blog.image.url }}" class="img-fluid mb-2"/>
+        </a>
+      {% else %}
+        <img src="{{ blog.image.url }}" class="img-fluid mb-2"/>
+      {% endif %}
+      <div class="text-center">
+          <h3>{{ blog.title }}</h3>
+          <p>{{ blog.description }}</p>
+          <h5>{{ blog.date|date:'M j Y' }}</h5>
+          <h5 class="text-muted">{{ blog.categories.first.name }}</h5>
+      </div>
+    </div>
+  {% endfor %}
+  
+{% endblock %}  

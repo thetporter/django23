@@ -1,0 +1,21 @@
+
+body { 
+	background: linear-gradient(320deg, #D87979 0%, #fff 100%);
+}
+
+a {
+	text-decoration: none;
+}
+
+.blog-form {
+	width: 600px
+}
+
+.blog-form p {
+	display: grid;
+	grid-template-columns: 100px 400px;
+}
+
+.blog-form p input#id_description {
+	height: 100px;
+}
